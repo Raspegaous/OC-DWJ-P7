@@ -1,0 +1,32 @@
+CREATE TABLE IF NOT EXISTS users
+(
+    id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    email VARCHAR(50) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    role VARCHAR(10) DEFAULT 'user',
+    avatar INT NOT NULL DEFAULT 1,
+    created_at TIMESTAMP DEFAULT NOW(),
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP()
+);
+
+CREATE TABLE IF NOT EXISTS posts
+(
+    id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    user_id INT,
+    title VARCHAR(255) NOT NULL,
+    category VARCHAR(50) NOT NULL DEFAULT 'Annonce',
+    content LONGTEXT,
+    slug VARCHAR(50) UNIQUE NOT NULL,
+    image VARCHAR(255),
+    liked LONGTEXT NOT NULL DEFAULT '{[]}',
+    created_at TIMESTAMP DEFAULT NOW()
+);
+
+CREATE TABLE IF NOT EXISTS comments
+(
+    id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    user_id INT,
+    post_id INT,
+    content LONGTEXT,
+    created_at TIMESTAMP DEFAULT NOW()
+);
