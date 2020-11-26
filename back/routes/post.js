@@ -10,6 +10,6 @@ router.get('/:id', auth, postCtrl.show);
 router.post('/', auth, postCtrl.create);
 router.put('/:id', auth, postCtrl.update);
 router.delete('/:id', auth, postCtrl.delete);
-router.put('/liking', auth, postCtrl.liking);
+router.post('/liking', auth, postCtrl.liking);
 
 module.exports = router;

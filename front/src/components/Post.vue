@@ -41,7 +41,7 @@
       </div>
       <div class="col-12">
 
-        <b-form @submit="sendComment">
+        <b-form @submit.prevent="sendComment">
           <b-form-group id="com" label-size="lg" label-cols="2" label="Commenter" label-for="com">
             <b-form-textarea v-model="com" rows="4" size="lg" id="com"></b-form-textarea>
           </b-form-group>
@@ -76,7 +76,6 @@ export default {
     },
     sendComment: function () {
       this['comment/createComment']({
-        userId: this['auth/user'].id,
         postId: this.post.id,
         comment: this.com
       })

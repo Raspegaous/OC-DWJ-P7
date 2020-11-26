@@ -49,7 +49,7 @@ export default {
         { value: null, text: 'Selectionnez une categorie' },
         { value: 'drh', text: 'DRH' },
         { value: 'annonce', text: 'Annonce' },
-        { value: 'cofee', text: 'Café' },
+        { value: 'coffee', text: 'Café' },
         { value: 'formation', text: 'Formation' },
       ],
     }

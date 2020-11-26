@@ -16,13 +16,13 @@
         <img class="img-responsive" :src="post.image" :alt="post.title">
       </router-link>
     </div>
-    <div class="cardbox-like">
+    <div class="cardbox-like" :class="{red: userHasLike}">
       <ul class="text-center">
         <li>
           <a href="#" @click.prevent="like()">
             <i class="fa fa-heart"></i>
           </a>
-          <span>{{ getLike() }}</span>
+          <span>{{ likes }}</span>
         </li>
         <li>
           <a href="#" title="" class="com" v-b-modal="'modal-comment-' + post.id">
@@ -122,7 +122,9 @@ export default {
   data () {
     return {
       user: this.$store.getters['auth/user'],
-      com: null
+      com: null,
+      likes: this.post.liked,
+      userHasLike: false
     }
   },
   methods: {
@@ -142,29 +144,15 @@ export default {
       if (name === undefined) return
       return this.$store.getters['user/name'](userId).email.split('@groupomania.fr')[0]
     },
-    getLike () {
-      let likes = JSON.parse(this.post.liked)
-      return likes.length
-    },
     like: function () {
-      let likes = Array.from(JSON.parse(this.post.liked))
-      console.log(likes)
-      for (let like of likes) {
-        if (like === this.$store.getters['auth/user'].id) {
-          likes.forEach((item, index, object) => {
-            if (item === like) {
-              object.splice(index, 1)
-            }
-          })
-          break
-        } else {
-          likes.push(this.$store.getters['auth/user'].id)
-        }
+      if (this.userHasLike) {
+        this.likes -= 1
+        this.userHasLike = false
+      } else {
+        this.likes += 1
+        this.userHasLike = true
       }
-      this['post/liking']({
-        postId: this.post.id,
-        liked: likes
-      })
+      this['post/liking'](this.likes)
     }
   }
 }

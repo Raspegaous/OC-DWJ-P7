@@ -1,6 +1,6 @@
 import Home from '@/views/Home'
 import Login from "@/views/Login";
-import Index from "@/views/post/Index2"
+import Index from "@/views/post/Index"
 import Show from "@/views/post/Show"
 import Category from "@/views/post/Category"
 import Create from "@/views/post/Create"

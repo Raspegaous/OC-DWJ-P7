@@ -101,7 +101,7 @@ export default {
   background-color: #545654;
 }
 .mint-green {
-  background-color: #0fc19e;
+  background-color: #ffd7d7;
 }
 
 @media(max-width:768px) {

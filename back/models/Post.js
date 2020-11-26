@@ -12,7 +12,6 @@ const db = mysql.createConnection({
 exports.getAll = (params) => {
     return db.connect((error) => {
         if (error) throw error;
-        console.log(params)
         return db.promise().query(`SELECT * FROM ${TABLE}`)
             .then(results => results[0])
             .catch(error => { throw error; });
@@ -45,7 +44,7 @@ exports.create = (data) => {
         if (error) throw error;
         return db.promise().query(
             `INSERT INTO ${TABLE} (user_id, title, category, content, image) VALUES (?, ?, ?, ?, ?)`,
-            [data.userId, data.title, data.category, data.content, data.image]
+            [data.userId, data.title, data.category.toLowerCase(), data.content, data.image]
         )
             .then(response => JSON.stringify(response))
             .catch(error => { throw error });
@@ -59,7 +58,6 @@ exports.create = (data) => {
  * @return {Promise<Object>|void}
  */
 exports.liking = (id, liking) => {
-    console.log(liking)
     return db.connect(error => {
         if (error) throw error;
         return db.promise().query(

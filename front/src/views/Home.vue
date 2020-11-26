@@ -1,17 +1,15 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Groupomania"/>
+  <div class="d-flex flex-column justify-content-center align-items-center">
+    <img alt="Vue logo" src="../assets/icon-above-font.png" height="500" width="auto">
+    <p>Bienvenue sur le réseau social de Groupomania</p>
+    <p>
+      <router-link :to="{name: 'Login'}">Identifiez-vous</router-link> pour accéder au contenu ou <router-link to="/signup">créez un compte</router-link>
+    </p>
   </div>
 </template>
 
 <script>
-import HelloWorld from '../components/HelloWorld'
-
 export default {
-  name: 'Home',
-  components: {
-    HelloWorld
-  }
+  name: 'Home'
 }
 </script>

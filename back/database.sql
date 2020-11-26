@@ -14,11 +14,10 @@ CREATE TABLE IF NOT EXISTS posts
     id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     user_id INT,
     title VARCHAR(255) NOT NULL,
-    category VARCHAR(50) NOT NULL DEFAULT 'Annonce',
+    category VARCHAR(50) NOT NULL DEFAULT 'annonce',
     content LONGTEXT,
-    slug VARCHAR(50) UNIQUE NOT NULL,
     image VARCHAR(255),
-    liked LONGTEXT NOT NULL DEFAULT '{[]}',
+    liked INTEGER NOT NULL DEFAULT 0,
     created_at TIMESTAMP DEFAULT NOW()
 );
 

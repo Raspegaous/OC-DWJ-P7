@@ -19,7 +19,7 @@ export default {
             })
     },
 
-    async createPost({rootGetters}, data) {
+    async createPost({dispatch, rootGetters}, data) {
         await axios.post('http://localhost:3000/api/post', {
             userId: rootGetters["auth/user"].id,
             title: data.title,
@@ -33,12 +33,13 @@ export default {
         })
             .then(response => response)
             .catch(error => error)
+            .then(() => dispatch('getPosts'))
     },
 
-    async liking({rootGetters}, data) {
-        await axios.put('http://localhost:3000/api/post/liking', {
+    async liking({dispatch, rootGetters}, data) {
+        return await axios.post('http://localhost:3000/api/post/liking', {
             postId: data.postId,
-            liked: data.liked.toString()
+            liked: data
         }, {
             headers: {
                 authorization: rootGetters['auth/token']
@@ -46,5 +47,6 @@ export default {
         })
             .then(response => response)
             .catch(error => error)
+            .then(() => dispatch('getPosts'))
     }
 }

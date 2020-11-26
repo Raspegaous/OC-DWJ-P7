@@ -47,7 +47,6 @@ export default {
                 id: response.data.response
             }))
             .catch(error => {
-                console.log('erroooooooooooooooooooooooooor')
                 throw error
             })
     }
