@@ -51,3 +51,16 @@ exports.token = (req, res) => {
         return res.status(200).json(decoded)
     })
 }
+
+exports.password = (req, res) => {
+    if (passwordValidator.validate(req.body.password)) {
+        bcrypt.hash(req.body.password)
+            .then(hash => {
+                User.password(req.body.userId, hash)
+                    .then(() => res.status(200).json({message: 'Mot de passe modifié'}))
+                    .catch(error => res.status(400).json({error}))
+            })
+            .catch(error => res.status(500).json({error}))
+    }
+    res.status(400).json({message: "Le mot de passe doit contenir entre 8 et 30 caractères, comporte une minuscule, une majuscule et un caractère spécial"})
+}

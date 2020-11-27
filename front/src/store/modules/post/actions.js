@@ -28,7 +28,7 @@ export default {
             image: data.image
         }, {
             headers: {
-                authorization: rootGetters["auth/token"]
+                authorization: rootGetters["auth/token"],
             }
         })
             .then(response => response)

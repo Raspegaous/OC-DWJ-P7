@@ -15,7 +15,7 @@
         </b-form-group>
 
         <b-form-group id="image" label-cols="4" label-size="lg" label="Image" label-for="image">
-          <b-form-file v-model="form.image" accept="image/*" size="lg" plain></b-form-file>
+          <b-form-radio-group v-model="form.image" :options="images"></b-form-radio-group>
         </b-form-group>
 
         <b-form-group id="content" label-cols="4" label-size="lg" label="Contenu" label-for="content">
@@ -52,6 +52,18 @@ export default {
         { value: 'coffee', text: 'Café' },
         { value: 'formation', text: 'Formation' },
       ],
+      images: [
+        { html: '<img src="https://picsum.photos/400/400/?image=10" class="w-25">', value: "https://picsum.photos/400/400/?image=10"},
+        { html: '<img src="https://picsum.photos/400/400/?image=20" class="w-25">', value: "https://picsum.photos/400/400/?image=20"},
+        { html: '<img src="https://picsum.photos/400/400/?image=30" class="w-25">', value: "https://picsum.photos/400/400/?image=30"},
+        { html: '<img src="https://picsum.photos/400/400/?image=40" class="w-25">', value: "https://picsum.photos/400/400/?image=40"},
+        { html: '<img src="https://picsum.photos/400/400/?image=50" class="w-25">', value: "https://picsum.photos/400/400/?image=50"},
+        { html: '<img src="https://picsum.photos/400/400/?image=60" class="w-25">', value: "https://picsum.photos/400/400/?image=60"},
+        { html: '<img src="https://picsum.photos/400/400/?image=70" class="w-25">', value: "https://picsum.photos/400/400/?image=70"},
+        { html: '<img src="https://picsum.photos/400/400/?image=80" class="w-25">', value: "https://picsum.photos/400/400/?image=80"},
+        { html: '<img src="https://picsum.photos/400/400/?image=90" class="w-25">', value: "https://picsum.photos/400/400/?image=90"},
+        { html: '<img src="https://picsum.photos/400/400/?image=100" class="w-25">', value: "https://picsum.photos/400/400/?image=100"},
+      ]
     }
   },
   methods: {

@@ -65,7 +65,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions(['comment/createComment', 'comment/deleteComment']),
+    ...mapActions(['comment/createComment', 'comment/deleteComment', 'post/getPosts']),
     del: function (comment) {
       this['comment/deleteComment'](comment)
     },
@@ -79,6 +79,7 @@ export default {
         postId: this.post.id,
         comment: this.com
       })
+      this['post/getPosts']()
     }
   }
 }

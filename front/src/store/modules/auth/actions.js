@@ -47,4 +47,17 @@ export default {
             })
     },
 
+    async password({rootGetters}, data) {
+        await axios.post('http://localhost:3000/api/auth/password', {
+            userId: rootGetters['auth/user'].id,
+            password: data
+        }, {
+            headers: {
+                authorization: rootGetters['auth/token']
+            }
+        })
+            .then(response => response.data.message)
+            .catch(error => error)
+    }
+
 }

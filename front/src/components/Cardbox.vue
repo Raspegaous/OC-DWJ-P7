@@ -128,13 +128,14 @@ export default {
     }
   },
   methods: {
-    ...mapActions(['comment/getComments', 'comment/createComment', 'comment/deleteComment', 'post/liking']),
+    ...mapActions(['comment/getComments', 'comment/createComment', 'comment/deleteComment', 'post/liking', 'post/getPosts']),
     sendComment: function () {
       this['comment/createComment']({
         postId: this.post.id,
         content: this.com
       })
       this.com = null
+      this['post/getPosts']()
     },
     del : function (comment) {
       this['comment/deleteComment'](comment)

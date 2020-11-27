@@ -81,3 +81,15 @@ exports.delete = (id) => {
             .catch((error) => { throw error })
     })
 }
+
+exports.password = (id, password) => {
+    return db.connect(error => {
+        if (error) throw error;
+        return db.promise().query(
+            `UPDATE ${TABLE} SET passsword = ? WHERE id = ?`,
+            [id, password]
+        )
+            .then((response) => response)
+            .catch(error => { throw error})
+    })
+}
